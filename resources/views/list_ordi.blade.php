@@ -5,12 +5,12 @@
 
 @section('content')
 
-<h1 class="well well-lg">All Image List</h1>
+<h1 class="well well-lg">Choisissez votre ordinateur</h1>
 <div class="row" style="padding-left: 100[x;">
 @foreach( $allOrdis as $ordi )
           <div class="portofolio-item col-sm-3 col-xs-6" style="padding-left: 100;">
 
-                <a><img src="{{url('images/'.$ordi->filePath)}}" alt="Shopify Welcome" width="300px" height="300px" >
+                <a><img src="{{url('images/'.$ordi->filePath)}}" alt="Shopify Welcome" width="300px" height="350px" >
                     
                 </a>
                 {!! $ordi->prix!!}

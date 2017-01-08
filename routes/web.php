@@ -22,7 +22,8 @@ Route::get('/home', 'HomeController@index');
 //Route::post('ajout', 'ChariotController@postAddToCart');
 Route::get('/home', 'HomeController@index');
 //Route::get('/', ['middleware' => 'guest', 'uses' => 'ChariotController@getIndex']);
-Route::get('/', 'ProduitController@index');
+//Route::get('/', 'ProduitController@index');
+Route::get('/', array('before'=>'auth.basic', 'as'=> 'index','uses'=>'ProduitController@index'));
 Route::resource('produit', 'ProduitController');
 Route::get('ajout', 'ProduitController@create');
 Route::get('ordi', 'ProduitController@afficheOrdinateur');
@@ -38,6 +39,9 @@ Route::get('delete/{id}', array('before'=>'auth.basic','as'=>'delete_book_from_c
 Route::post('order', array('before'=>'auth.basic','uses'=>'CommandeController@store'));
 Route::get('orders', array('before'=>'auth.basic','uses'=>'CommandeController@index'));
 
+Route::get('espace', function(){
+    return view('index');
+});
 
-
+//Route::get('single/{}', 'ProduitController@show');
 

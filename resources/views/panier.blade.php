@@ -7,6 +7,9 @@
   <table class="table table-bordered">
     <thead>
       <tr>
+          <th>
+          <b>Photo</b>
+        </th>
         <th>
           <b>Title</b>
         </th>
@@ -20,14 +23,19 @@
           <b>Total</b>
         </th>
         <th>
-          
+          Action
         </th>
       </tr>
       </thead>
       <tbody>
       @foreach($cart_produits as $cart_item)
         <tr>
-          <td>{{$cart_item->Books->title}}</td>
+        <td>
+                     <a ><img src="{{url('images/'.$cart_item->Books->filePath)}}"  width="50px" height="50px"></a>
+          </td>
+          <td>
+              {{$cart_item->Books->title}}
+          </td>
           <td>
            {{$cart_item->montant}}
           </td>

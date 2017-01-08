@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-   /*     
+      
    if(Auth::check()){
     view()->composer('*', function ($view) 
     {
@@ -24,9 +24,11 @@ class AppServiceProvider extends ServiceProvider
         
         $view->with('cart_total', $cart_total );    
     });
-    }*/
     }
-
+  
+    else 
+        return view('index');
+    }
     /**
      * Register any application services.
      *

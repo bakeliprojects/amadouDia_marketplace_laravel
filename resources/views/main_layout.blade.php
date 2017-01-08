@@ -10,31 +10,9 @@
 
     <title>@yield('titre')</title>
     
-    <!-- Styles -->
-     <!-- Bootstrap core CSS -->
-        <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <!-- Scripts -->
-    <script
-  src="https://code.jquery.com/jquery-3.1.1.js"
-  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
-  crossorigin="anonymous"></script>
-    <script>
-        window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
-    </script>
-    <script
-  src="https://code.jquery.com/jquery-3.1.1.js"
-  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
-  crossorigin="anonymous"></script>
-    
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
        <style>
 /* Footer */
 
@@ -97,6 +75,39 @@ footer h1
     text-decoration: none;
     color: #760001;
 }
+figure {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    margin: 0;
+}
+img, figcaption {
+    transition: all .25s ease;
+}
+
+figcaption {
+    position: bottom;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: .5em;
+    background: #000;
+    background: rgba(0, 0, 0, .75);
+    color: #fff;
+    opacity: 0;
+}
+figure:hover img {
+    transform: scale(1.1);
+}
+figure:hover figcaption {
+    opacity: 10;
+}
+           li{
+               color:white;
+           }
+           
+
 </style>
 </head>
 <body  style="background-color:white;">
@@ -105,10 +116,11 @@ footer h1
     <div class="navbar navbar-inversion">
     <div class="container">
         <a id="logo" href="{{ url('produit')  }}" class="navbar-brand" style="color: white;">Compute Your Computer</a>
-        Follow us
-        <img src="logos/social_facebook.png" class="navbar-right" width="40px" height="40px">
-        <img src="logos/social_twitter.png" class="navbar-right" width="40px" height="40px" >
-        <img src="logos/social_linkedin.png"  class="navbar-right" width="40px" height="40px">
+       
+        <img src="logos/logo_facebook.png" class="navbar-right" width="40px" height="40px" style="margin: 5px;"/>
+        <img src="logos/twitter-logo-294x294.png" class="navbar-right" width="40px" height="40px" style="margin: 5px;" />
+        <img src="logos/google-plus-icon.png" class="navbar-right" width="40px" height="40px" style="margin: 5px;" />
+        <i class=" navbar-right"> Follow us</i>
         
         
     </div>
@@ -120,9 +132,9 @@ footer h1
 
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse"   style="background-color:black; color:white;">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="{{ url('produit')  }}">Tous produits <span class="sr-only">(current)</span></a></li>
+    <div class="collapse navbar-collapse"   style="background-color:black;">
+      <ul class="nav navbar-nav" >
+        <li class="active" style="color:white;"><a href="{{ url('produit')  }} ">Tous produits <span class="sr-only">(current)</span></a></li>
         <li><a href="{{ url('tels')  }}">Telephones</a></li>
         <li><a href="{{ url('teles')  }}">Televiseurs</a></li>
           <li><a href="{{ url('ordi')  }}">Ordinateurs</a></li>
@@ -131,7 +143,7 @@ footer h1
     {!! Form::text('search', null,
                            array('required',
                                 'class'=>'form-control',
-                                'placeholder'=>'Search for a product...')) !!}
+                                'placeholder'=>'Rechercher un produit...')) !!}
      {!! Form::submit('Search',
                                 array('class'=>'btn btn-default')) !!}
  {!! Form::close() !!}
@@ -141,18 +153,32 @@ footer h1
                             <li><a href="{{ url('/login') }}">Se connecter</a></li>
                             <li><a href="{{ url('/register') }}">S'inscrire</a></li>
                         @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                            
+                                
+                            <div class="dropdown">
+                                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> {{ Auth::user()->name }}
+                                    <span class="caret"></span></button>
+                                    
+                                
+                                <ul class="dropdown-menu">
+                                    <li>
+                                      <a href="#" title="accueil compte">Accueil compte</a>
+                                    </li>
+                                    <li>    
+                                        @if(Auth::check())
+                                            <a href="{{ url('ajout')  }}" class="top_login"> <span width="77" height="25"></i>Ajouter un produit</span></a>
+                                        @endif
+                                </li>
+                                    <li>  <a href="chariot"> <img src="logos/ico-cart.png" > Panier <b></b></a></li>
+                                    <li>
                                   <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Se deconnecter
+                                            
                                         </a>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
+                                
+                                    
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -163,9 +189,13 @@ footer h1
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+                                    
+                                
+                                
                                 </ul>
-                            </li>
-                            <li>
+                            </div>
+     <!--           
+                            
         @if(Auth::check())
     <a href="{{ url('ajout')  }}" class="top_login"> <span width="77" height="25"></i>Ajouter un produit</span></a>
     @endif
@@ -175,7 +205,8 @@ footer h1
                             <a href="chariot"> <img src="logos/ico-cart.png" > Panier <b></b></a></li>
     
                         @endif
-                    </ul>
+-->
+                    
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

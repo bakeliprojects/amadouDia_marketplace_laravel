@@ -30,11 +30,11 @@ class CommandeController extends Controller
 
        $cart_total=Chariot::with('Books')->where('user_id','=',$user_id)->sum('total');
 
-       if(!$cart_produits){
+       if(count($cart_produits) === 0){
 
          return Redirect::route('index')->with('error','Your cart is empty.');
        }
-
+      
       $order = Order::create(
         array(
         'user_id'=>$user_id,

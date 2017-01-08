@@ -107,6 +107,13 @@ class ProduitController extends Controller
             return view('search', compact('articles', 'query'));
 
         }
+             public function show($id)
+        {
+           
+          $produits = Produit::find($id);
+            return view('detail', ['produit'=>$produits]);
+           
+        }
     
 }
 

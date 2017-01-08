@@ -5,14 +5,14 @@
 
 @section('content')
 
-<h1 class="well well-lg">All Image List</h1>
+<h1 class="well well-lg">Choisissez votre tele</h1>
 <div class="row" style="padding-left: 100px;">
 @foreach( $allTeles as $tele )
           <div class="portofolio-item col-sm-3 col-xs-6" style="padding-left: 100;">
             
         <!-- First slide -->
 
-                <a><img src="{{url('images/'.$tele->filePath)}}" alt="Shopify Welcome" width="300px" height="300px">
+                <a><img src="{{url('images/'.$tele->filePath)}}" alt="Shopify Welcome" width="300px" height="350px">
                 </a>
                 {!! $tele->prix!!}
               <form action="ajoutchariot" name="add_to_cart" method="post" accept-charset="UTF-8">
