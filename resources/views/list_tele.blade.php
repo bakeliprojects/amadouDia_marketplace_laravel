@@ -12,9 +12,12 @@
             
         <!-- First slide -->
 
-                <a><img src="{{url('images/'.$tele->filePath)}}" alt="Shopify Welcome" width="300px" height="350px">
-                </a>
-                {!! $tele->prix!!}
+       <figure>       
+        <a href="{{action('ProduitController@show', ['id'=>$tel->id])}}"><img src="{{url('images/'.$tele->filePath)}}" alt="Shopify Welcome" width="300px" height="350px" ></a>
+            <figcaption>Prix {!! $tele->prix!!}</figcaption>
+           <span>  </span>
+         </figure>
+            
               <form action="ajoutchariot" name="add_to_cart" method="post" accept-charset="UTF-8">
                 {{ csrf_field() }}
                 <input type="hidden" name="produit" value="{!!$tele->id!!}" />

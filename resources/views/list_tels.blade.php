@@ -10,11 +10,13 @@
     @foreach( $allTels as $tel )
           <div class="portofolio-item col-sm-3 col-xs-6" >
 
-                <a><img src="{{url('images/'.$tel->filePath)}}" alt="Shopify Welcome" width="300px" height="350px">
-                    
-                </a>
+        <figure>       
+        <a href="{{action('ProduitController@show', ['id'=>$tel->id])}}"><img src="{{url('images/'.$tel->filePath)}}" alt="Shopify Welcome" width="300px" height="350px" ></a>
+            <figcaption>Prix {!! $tel->prix!!}</figcaption>
+           <span>  </span>
+         </figure>
               
-              <h3>{{$tel->title}}</h3>
+        
               
                 <form action="ajoutchariot" name="add_to_cart" method="post" accept-charset="UTF-8">
                 {{ csrf_field() }}

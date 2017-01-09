@@ -13,7 +13,7 @@
             <div class="view overlay hm-blue-slight">
         <!-- First slide -->
 
-                <a><img src="{{url('images/'.$article->filePath)}}" alt="Shopify Welcome">
+                <a><img src="{{url('images/'.$article->filePath)}}" alt="Shopify Welcome" width="300px" height="300px">
                     <div class="mask waves-effect waves-light"></div>
                 </a>
                 {!! $article->type!!}

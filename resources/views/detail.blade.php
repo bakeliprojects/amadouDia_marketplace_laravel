@@ -5,7 +5,8 @@
 
 @section('content')
 
- 
+
+
 
 <div class="paragraphs">
   <div class="row">
@@ -15,11 +16,10 @@
         <div class="content-heading"><h3>Prix {!! $produit->prix!!} </h3></div>
         <div class="content-heading"><h3> {!! $produit->description!!} </h3></div>
         <div class="content-heading"><h3>Vendeur: {!! $produit->user->name!!}</h3> </div>
-       
-
+        
     </div>
   </div>
 </div>
-   
+
 
 @stop

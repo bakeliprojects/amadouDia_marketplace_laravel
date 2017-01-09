@@ -69,12 +69,17 @@
       </tr>  
     </tbody>
   </table>
-  <h1>Shipping</h1>
+  <h1>Commander</h1>
   <form action="order" method="post" accept-charset="UTF-8">
        {{ csrf_field() }}
     <label>Address</label>
-    <textarea class="span4" name="address" rows="5"></textarea>
-    <button class="btn btn-block btn-primary btn-large">Place order</button>
+    <textarea class="span4" name="address" rows="3"></textarea>
+    <button class="btn btn-block btn-primary btn-large">Acheter</button>
   </form>
+<div class="alert-warning">
+            @foreach( $errors->all() as $error )
+               <br> {{ $error }}
+            @endforeach
+        </div>
 </div>
 @stop

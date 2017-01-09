@@ -109,13 +109,25 @@ figure:hover figcaption {
            
 
 </style>
+    
+<script>
+
+  function ConfirmDelete()
+  {
+  var x = confirm("Voulez-vous vraiment supprimer ce produit?");
+  if (x)
+    return true;
+  else
+    return false;
+  }
+</script>
 </head>
 <body  style="background-color:white;">
 <header>
-<div  style="background-color:black; color:white;">
+<div  style="background-color:black; color:white;font-size: large;font-family: fantasy;">
     <div class="navbar navbar-inversion">
     <div class="container">
-        <a id="logo" href="{{ url('produit')  }}" class="navbar-brand" style="color: white;">Compute Your Computer</a>
+        <a id="logo" href="{{ url('produit')  }}" class="navbar-brand" style="color: white; font-size: large;font-family: fantasy; ">Compute Your Computer</a>
        
         <img src="logos/logo_facebook.png" class="navbar-right" width="40px" height="40px" style="margin: 5px;"/>
         <img src="logos/twitter-logo-294x294.png" class="navbar-right" width="40px" height="40px" style="margin: 5px;" />
@@ -144,7 +156,7 @@ figure:hover figcaption {
                            array('required',
                                 'class'=>'form-control',
                                 'placeholder'=>'Rechercher un produit...')) !!}
-     {!! Form::submit('Search',
+     {!! Form::submit('Rechercher',
                                 array('class'=>'btn btn-default')) !!}
  {!! Form::close() !!}
 <ul class="nav navbar-nav navbar-right">
@@ -162,7 +174,7 @@ figure:hover figcaption {
                                 
                                 <ul class="dropdown-menu">
                                     <li>
-                                      <a href="#" title="accueil compte">Accueil compte</a>
+                                      <a href="espace" title="accueil compte">Accueil compte</a>
                                     </li>
                                     <li>    
                                         @if(Auth::check())
@@ -170,6 +182,7 @@ figure:hover figcaption {
                                         @endif
                                 </li>
                                     <li>  <a href="chariot"> <img src="logos/ico-cart.png" > Panier <b></b></a></li>
+                            <li>  <a href="orders"> <img src="logos/ico-cart.png" >Mes commandes <b></b></a></li>
                                     <li>
                                   <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();

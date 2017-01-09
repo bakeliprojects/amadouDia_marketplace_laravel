@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 use App\Chariot;
 use App\Produit;
 use App\User;
@@ -15,10 +16,9 @@ class CommandeController extends Controller
     
      public function store(Request $request)
   {
-    $rules=array(
-
-      'address'=>'required'
-    );
+    $this->validate($request, [
+            'address' => 'required'
+        ]);
 
  
       Auth::user();
@@ -79,7 +79,7 @@ class CommandeController extends Controller
       return Redirect::route('index')->with('error','There is no order.');
     }
     
-    return View::make('order')
+    return View::make('commande')
           ->with('orders', $orders);
   }
 }

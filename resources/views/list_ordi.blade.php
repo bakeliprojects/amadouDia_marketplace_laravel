@@ -6,16 +6,16 @@
 @section('content')
 
 <h1 class="well well-lg">Choisissez votre ordinateur</h1>
-<div class="row" style="padding-left: 100[x;">
+<div class="row" style="padding-left: 100px;">
 @foreach( $allOrdis as $ordi )
           <div class="portofolio-item col-sm-3 col-xs-6" style="padding-left: 100;">
 
-                <a><img src="{{url('images/'.$ordi->filePath)}}" alt="Shopify Welcome" width="300px" height="350px" >
-                    
-                </a>
-                {!! $ordi->prix!!}
-            
-    <form action="ajoutchariot" name="add_to_cart" method="post" accept-charset="UTF-8">
+       <figure>       
+        <a href="{{action('ProduitController@show', ['id'=>$ordi->id])}}"><img src="{{url('images/'.$ordi->filePath)}}" alt="Shopify Welcome" width="300px" height="350px" ></a>
+            <figcaption>Prix {!! $ordi->prix!!}</figcaption>
+           <span>  </span>
+         </figure>
+<form action="ajoutchariot" name="add_to_cart" method="post" accept-charset="UTF-8">
                 {{ csrf_field() }}
                 <input type="hidden" name="produit" value="{!!$ordi->id!!}" />
                 <select name="montant" style="width: 100%;">
